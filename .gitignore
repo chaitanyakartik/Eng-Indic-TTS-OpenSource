@@ -1,0 +1,15 @@
+#local environment stuff
+.env
+venv/
+
+#Github Repos
+en-indic/
+fairseq/
+indic_nlp_library/
+indic_nlp_resources/
+indicTrans/
+subword-nmt/
+
+#rand files
+en2indic.zip
+
