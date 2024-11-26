@@ -1,32 +1,47 @@
-# from termcolor import colored
-# import os
-# import sys
+# -*- coding: utf-8 -*-
 
-# # Add the local fairseq directory to PYTHONPATH
-# fairseq_path = r"E:\Projects\Multilingual_TTS\fairseq"  # Use raw string for Windows paths
-# if fairseq_path not in sys.path:  # Ensure no duplicate entries
-#     sys.path.append(fairseq_path)
+import os
+import sys
+import subprocess
 
-# # Try importing Fairseq
-# try:
-#     from fairseq import checkpoint_utils,distributed_utils, options, tasks, utils
-#     print(colored("Fairseq imported successfully!", "green"))  # Green text
-# except Exception as e:
-#     print(colored(f"Error during import: {e}", "red"))  # Red text
+# Ensure UTF-8 encoding
+os.environ['PYTHONIOENCODING'] = 'utf-8'
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
+
 from translator_model import translator_model
 
-
-# from indicTrans.inference.engine import Model
-
-# en2indic_model = Model(expdir='E:\Projects\Multilingual_TTS\en-indic')
 en2indic_model = translator_model(enindic_path="E:\Projects\Multilingual_TTS\en-indic",
                                          fairseq_path="E:\Projects\Multilingual_TTS\fairseq",
                                          indicTrans_path="E:\Projects\Multilingual_TTS\indicTrans")
 
-ta_sents = ['In Nashik district’s Nandgaon constituency, scuffle broke out between Eknath Shinde-led Shiv Sena candidate Suhas Kande and Independent candidate Sameer Bhujbal, nephew of top NCP (Ajit Pawar) leader Chaggan Bhujbal at a polling centre']
-
+ta_sents = ['One dead as Bangladeshi Hindus protest denial of bail to ISKCON leader Chinmoy Krishna Das Brahmachari']
 
 translated = en2indic_model.batch_translate(ta_sents, 'en', 'hi')
+translated_str = ' '.join(translated)
 
-print(translated)
+#translated = 'नासिक जिले के नंदगांव निर्वाचन क्षेत्र में एकनाथ शिंदे के नेतृत्व वाले शिवसेना उम्मीदवार सुहास कांडे और राकांपा (अजित पवार) के शीर्ष नेता छगन भुजबल के भतीजे निर्दलीय उम्मीदवार समीर भुजबल के बीच एक मतदान केंद्र पर हाथापाई हो गई'
+print(translated_str)
 
+
+ps1_file_path = r"E:\Projects\Multilingual_TTS\run_tts.ps1"
+
+# Command to run the PowerShell script with arguments
+# Modify the command to pass arguments directly
+command = [
+    "powershell",
+    "-ExecutionPolicy", "Bypass",
+    "-File", ps1_file_path,
+    translated_str,  # First argument
+    "male",      # Second argument
+    "hindi",     # Third argument
+    "output4.wav"  # Fourth argument
+]
+# Run the PowerShell script
+try:
+    result = subprocess.run(command, check=True, capture_output=True, text=True, encoding='utf-8')
+    print("PowerShell script executed successfully.")
+    print(result.stdout)  # Print the output of the script
+    print(result.stderr)
+except subprocess.CalledProcessError as e:
+    print(f"Error executing PowerShell script: {e}")

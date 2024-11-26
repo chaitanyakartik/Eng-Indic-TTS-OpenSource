@@ -1,1 +1,3 @@
 termcolor
+pandas
+indic_unified_parser==1.0.6
