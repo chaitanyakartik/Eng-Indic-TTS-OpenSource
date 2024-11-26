@@ -1,6 +1,7 @@
 Python Version: Python 3.9.10
 
 Setup Instructions:
+Install Miniconda first
 
 1. First Activate virtual environment
    python -m venv venv

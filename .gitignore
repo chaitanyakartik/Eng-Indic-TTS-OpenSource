@@ -2,6 +2,7 @@
 .env
 venv/
 
+#Translation Model Stuff
 #Github Repos
 en-indic/
 fairseq/
@@ -9,7 +10,9 @@ indic_nlp_library/
 indic_nlp_resources/
 indicTrans/
 subword-nmt/
-
 #rand files
 en2indic.zip
+
+#TTS Model Stuff
+Fastspeech2_HS/
 
