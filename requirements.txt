@@ -1,3 +1,5 @@
 termcolor
 pandas
 indic_unified_parser==1.0.6
+flask==2.2.5 
+werkzeug==2.2.3

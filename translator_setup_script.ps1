@@ -2,8 +2,8 @@
 
 Write-Output "Starting setup..."
 # Create and activate a virtual environment (recommended)
-python -m venv venv
-.\venv\Scripts\Activate
+# python -m venv venv
+# .\venv\Scripts\Activate
 
 # Upgrade pip to latest version first
 python.exe -m pip install --upgrade pip
