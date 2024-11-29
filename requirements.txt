@@ -3,3 +3,14 @@ pandas
 indic_unified_parser==1.0.6
 flask==2.2.5 
 werkzeug==2.2.3
+
+#for video gen
+pydub 
+numpy 
+moviepy
+imageio[ffmpeg]
+
+
+#for .wav to .mp3
+mutagen 
+lameenc

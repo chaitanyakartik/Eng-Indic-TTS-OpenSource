@@ -1,7 +1,9 @@
 Python Version: Python 3.9.10
 
 Setup Instructions:
-Install Miniconda first
+Install Miniconda
+Install microsoft build tools:
+Microsoft C++ Build Tools": https://visualstudio.microsoft.com/visual-cpp-build-tools/
 
 1. First Activate virtual environment
    python -m venv venv
